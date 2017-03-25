@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:base="clr-namespace:SibSoftProjectTest.Views.Pages.Base;assembly=SibSoftProjectTest"
+             xmlns:markups="clr-namespace:SibSoftProjectTest.Markups;assembly=SibSoftProjectTest"
+             x:Class="SibSoftProjectTest.Views.Pages.ImagesPage"
+             Title="{markups:Localize Images}">
+    
+</base:ContentPageBase>

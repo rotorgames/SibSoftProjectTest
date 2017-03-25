@@ -23,6 +23,9 @@ namespace SibSoftProjectTest.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
 
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.IoniconsModule());
+            FormsPlugin.Iconize.iOS.IconControls.Init();
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             CachedImageRenderer.Init();

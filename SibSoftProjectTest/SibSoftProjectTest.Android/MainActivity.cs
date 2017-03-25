@@ -20,6 +20,9 @@ namespace SibSoftProjectTest.Droid
 
             base.OnCreate(bundle);
 
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.IoniconsModule());
+            FormsPlugin.Iconize.Droid.IconControls.Init();
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             CachedImageRenderer.Init();
 

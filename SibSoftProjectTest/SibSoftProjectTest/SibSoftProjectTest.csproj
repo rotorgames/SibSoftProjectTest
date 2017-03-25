@@ -51,7 +51,7 @@
     <Compile Include="Views\Pages\ImagesPage.xaml.cs">
       <DependentUpon>ImagesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Wrappes\MainViewModelMapper.cs" />
+    <Compile Include="Mappes\MainViewModelMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FreshMvvm;
+using SibSoftProjectTest.Mappes;
 using SibSoftProjectTest.Resources;
 using SibSoftProjectTest.ViewModel;
 using SibSoftProjectTest.Views.Pages;
-using SibSoftProjectTest.Wrappes;
 using Xamarin.Forms;
 
 namespace SibSoftProjectTest

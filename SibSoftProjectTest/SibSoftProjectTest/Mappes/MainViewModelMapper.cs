@@ -4,7 +4,7 @@ using FreshMvvm;
 using SibSoftProjectTest.ViewModel.Base;
 using Xamarin.Forms;
 
-namespace SibSoftProjectTest.Wrappes
+namespace SibSoftProjectTest.Mappes
 {
     public class MainViewModelMapper : IFreshPageModelMapper
     {

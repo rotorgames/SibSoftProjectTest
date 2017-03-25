@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 using SibSoftProjectTest.Abstractions.Services;
@@ -52,6 +51,8 @@ namespace SibSoftProjectTest.ViewModel
             var localCats = _catsStorage.Cats;
             var favoritesCatsIds = _catsStorage.CatsFavoritesIds;
 
+            Cats = localCats;
+
             var favoritesCats = localCats?.Where(model => favoritesCatsIds?.Any(id => model.Id == id) == true).ToList();
 
             if (favoritesCats == null || favoritesCats.Count == 0)
@@ -60,7 +61,6 @@ namespace SibSoftProjectTest.ViewModel
                 return;
             }
 
-            Cats = localCats;
             FavoritesCats = favoritesCats;
 
             CurrentState = State.Normal;

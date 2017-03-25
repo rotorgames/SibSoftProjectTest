@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SibSoftProjectTest.Views.Cells.CustomImageCell"
+    x:Name="ThisCell">
+    <Grid
+        BindingContext="{Binding Source={x:Reference ThisCell}}"
+        Padding="0, 2, 0, 5"
+        BackgroundColor="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--Title-->
+        <Label 
+            Margin="5, 0, 5, 0"
+            VerticalTextAlignment="Center"
+            Grid.Column="0"
+            Grid.Row="0"
+            TextColor="{StaticResource MessageTextColor}"
+            Text="{Binding Title}"/>
+
+        <!--Favorite Button-->
+        <ContentView
+            Padding="10"
+            Grid.Column="1"
+            Grid.Row="0">
+            <ContentView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnFavoriteTapped"/>
+            </ContentView.GestureRecognizers>
+            <iconize:IconLabel
+                FontSize="18"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                BackgroundColor="Transparent">
+                <iconize:IconLabel.Triggers>
+                    <DataTrigger Binding="{Binding IsFavorite}" Value="True" TargetType="iconize:IconLabel">
+                        <Setter Property="Text" Value="ion-android-favorite"/>
+                        <Setter Property="TextColor" Value="{StaticResource PurpleColor}"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding IsFavorite}" Value="False" TargetType="iconize:IconLabel">
+                        <Setter Property="Text" Value="ion-android-favorite-outline"/>
+                        <Setter Property="TextColor" Value="{StaticResource BlueColor}"/>
+                    </DataTrigger>
+                </iconize:IconLabel.Triggers>
+            </iconize:IconLabel>
+        </ContentView>
+
+        <!--Image-->
+        <forms:CachedImage 
+            x:Name="MainImage"
+            Aspect="AspectFit"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="1"/>
+
+        <!--Description-->
+        <Label
+           x:Name="DescriptionLabel"
+           Margin="5, 0, 5, 0"
+           Grid.Column="0"
+           Grid.Row="2"
+           TextColor="{StaticResource MessageTextColor}"
+           Text="{Binding Description}"/>
+        <Editor
+            x:Name="DescriptionEditor"
+            IsVisible="False"
+            Margin="5, 0, 5, 0"
+            HeightRequest="80"
+            Grid.Column="0"
+            Grid.Row="2"
+            FontSize="14"
+            TextColor="{StaticResource MessageTextColor}"
+            Text="{Binding Description}"/>
+
+        <!--Edit Button-->
+        <iconize:IconLabel
+            Grid.Column="1"
+            Grid.Row="2"
+            FontSize="18"
+            Text="ion-edit"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            BackgroundColor="Transparent"
+            TextColor="{StaticResource BlueColor}">
+            <iconize:IconLabel.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnEditButtonTapped"/>
+            </iconize:IconLabel.GestureRecognizers>
+        </iconize:IconLabel>
+    </Grid>
+</ViewCell>

@@ -2,7 +2,7 @@
 
 namespace SibSoftProjectTest.ViewModel.Base
 {
-    public class ViewModelBase : FreshBasePageModel
+    public abstract class ViewModelBase : FreshBasePageModel
     {
     }
 }

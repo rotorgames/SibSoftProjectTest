@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace SibSoftProjectTest.Services.Storages.Base
@@ -12,14 +13,14 @@ namespace SibSoftProjectTest.Services.Storages.Base
         {
             object result;
             if (CurrentApp.Properties.TryGetValue(propertyName, out result))
-                return (TResult) result;
+                return JsonConvert.DeserializeObject<TResult>((string)result);
 
             return default(TResult);
         }
 
         protected void SetValue<TValue>(TValue value, bool needSave = true, [CallerMemberName] string propertyName = null)
         {
-            CurrentApp.Properties.Add(propertyName, value);
+            CurrentApp.Properties[propertyName] = JsonConvert.SerializeObject(value);
 
             if(needSave)
                 Save();

@@ -4,8 +4,8 @@ using SibSoftProjectTest.Models;
 
 namespace SibSoftProjectTest.Abstractions.Services
 {
-    public interface IImagesData
+    public interface ICatsData
     {
-        List<ImageModel> Images { get; set; }
+        Task<List<ImageModel>> GetCats();
     }
 }

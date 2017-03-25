@@ -35,10 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\Services\IImagesData.cs" />
+    <Compile Include="Abstractions\Services\ICatsData.cs" />
+    <Compile Include="Abstractions\Services\ICatsStorage.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Enums\Condition\State.cs" />
     <Compile Include="Markups\LocalizeExtension.cs" />
     <Compile Include="Models\Base\ModelBase.cs" />
     <Compile Include="Models\ImageModel.cs" />
@@ -48,10 +50,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\Rest\CatsStubRestService.cs" />
     <Compile Include="Services\Storages\Base\LocalStorageBase.cs" />
-    <Compile Include="Services\Storages\ImagesLocalStorage.cs" />
+    <Compile Include="Services\Storages\CatsLocalStorage.cs" />
     <Compile Include="ViewModel\Base\ViewModelBase.cs" />
     <Compile Include="ViewModel\ImagesViewModel.cs" />
+    <Compile Include="Views\Cells\CustomImageCell.xaml.cs">
+      <DependentUpon>CustomImageCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Condition\ConditionsView.cs" />
     <Compile Include="Views\Pages\Base\ContentPageBase.cs" />
     <Compile Include="Views\Pages\ImagesPage.xaml.cs">
       <DependentUpon>ImagesPage.xaml</DependentUpon>
@@ -121,9 +128,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Views\Pages\ImagesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -132,6 +137,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Cells\CustomImageCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

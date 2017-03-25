@@ -3,7 +3,65 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:base="clr-namespace:SibSoftProjectTest.Views.Pages.Base;assembly=SibSoftProjectTest"
              xmlns:markups="clr-namespace:SibSoftProjectTest.Markups;assembly=SibSoftProjectTest"
+             xmlns:cells="clr-namespace:SibSoftProjectTest.Views.Cells;assembly=SibSoftProjectTest"
+             xmlns:condition="clr-namespace:SibSoftProjectTest.Views.Controls.Condition;assembly=SibSoftProjectTest"
              x:Class="SibSoftProjectTest.Views.Pages.ImagesPage"
+             x:Name="ThisPage"
              Title="{markups:Localize Images}">
-    
+    <condition:ConditionsView
+        State="{Binding CurrentState}">
+        <ListView
+            HasUnevenRows="True"
+            SeparatorColor="Gray"
+            ItemsSource="{Binding Cats}">
+                <x:Arguments>
+                    <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                </x:Arguments>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <cells:CustomImageCell
+                            Title="{Binding Title}"
+                            Description="{Binding Description}"
+                            Image="{Binding Image}"
+                            IsFavorite="{Binding IsFavorite}"
+                            WasChangedCommand="{Binding Source={x:Reference ThisPage}, Path=BindingContext.ItemWasChangedCommand}"
+                            FavoriteCommand="{Binding Source={x:Reference ThisPage}, Path=BindingContext.FavoriteCommand}"
+                            FavoriteCommandParameter="{Binding .}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        <condition:ConditionsView.Loading>
+            <ContentView>
+                <ActivityIndicator
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    IsRunning="True"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+            </ContentView>
+        </condition:ConditionsView.Loading>
+        <condition:ConditionsView.Error>
+            <StackLayout
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Label
+                    HorizontalOptions="Center"
+                    TextColor="{StaticResource MessageTextColor}"
+                    Text="{markups:Localize ConnectionError}"/>
+                <Button
+                    HorizontalOptions="Center"
+                    Command="{Binding RepeatCommand}"
+                    BackgroundColor="{StaticResource BlueColor}"
+                    TextColor="White"
+                    Text="{markups:Localize Repeat}"/>
+            </StackLayout>
+        </condition:ConditionsView.Error>
+        <condition:ConditionsView.NoData>
+            <Label
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource MessageTextColor}"
+                Text="{markups:Localize NoData}"/>
+        </condition:ConditionsView.NoData>
+    </condition:ConditionsView>
 </base:ContentPageBase>

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using FreshMvvm;
+﻿using FreshMvvm;
+using SibSoftProjectTest.Abstractions.Services;
 using SibSoftProjectTest.Mappes;
 using SibSoftProjectTest.Resources;
+using SibSoftProjectTest.Services.Rest;
+using SibSoftProjectTest.Services.Storages;
 using SibSoftProjectTest.ViewModel;
 using SibSoftProjectTest.Views.Pages;
 using Xamarin.Forms;
@@ -36,7 +35,8 @@ namespace SibSoftProjectTest
 
         private void RegisterServices()
         {
-            
+            Container.Register<ICatsStorage, CatsLocalStorage>().AsSingleton();
+            Container.Register<ICatsData, CatsStubRestService>().AsSingleton();
         }
 
         private void RegisterPages()

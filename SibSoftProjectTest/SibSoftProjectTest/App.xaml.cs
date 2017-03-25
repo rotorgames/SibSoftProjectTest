@@ -28,7 +28,8 @@ namespace SibSoftProjectTest
             RegisterPages();
 
             var tabbedPage = new FreshTabbedNavigationContainer();
-            tabbedPage.AddTab<ImagesViewModel>(Strings.Images, "");
+            tabbedPage.AddTab<ImagesViewModel>(Strings.All, "");
+            tabbedPage.AddTab<FavoritesViewModel>(Strings.Favorites, "");
 
             MainPage = tabbedPage;
         }
@@ -41,9 +42,10 @@ namespace SibSoftProjectTest
 
         private void RegisterPages()
         {
-            var wrapper = _mapper;
+            var mapper = _mapper;
 
-            wrapper.Register<ImagesViewModel, ImagesPage>();
+            mapper.Register<ImagesViewModel, ImagesPage>();
+            mapper.Register<FavoritesViewModel, FavoritesPage>();
         }
 
         protected override void OnStart()

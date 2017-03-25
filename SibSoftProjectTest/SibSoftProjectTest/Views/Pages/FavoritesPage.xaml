@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:base="clr-namespace:SibSoftProjectTest.Views.Pages.Base;assembly=SibSoftProjectTest"
+             xmlns:markups="clr-namespace:SibSoftProjectTest.Markups;assembly=SibSoftProjectTest"
+             xmlns:condition="clr-namespace:SibSoftProjectTest.Views.Controls.Condition;assembly=SibSoftProjectTest"
+             xmlns:cells="clr-namespace:SibSoftProjectTest.Views.Cells;assembly=SibSoftProjectTest"
+             x:Class="SibSoftProjectTest.Views.Pages.FavoritesPage"
+             x:Name="ThisPage"
+             Title="{markups:Localize Favorites}">
+    <condition:ConditionsView
+        State="{Binding CurrentState}">
+        <ListView
+            HasUnevenRows="True"
+            SeparatorColor="Gray"
+            ItemsSource="{Binding FavoritesCats}">
+            <x:Arguments>
+                <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+            </x:Arguments>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <cells:CustomImageCell
+                        Title="{Binding Title}"
+                        Description="{Binding Description}"
+                        Image="{Binding Image}"
+                        IsFavoriteButtonVisible="False"
+                        WasChangedCommand="{Binding Source={x:Reference ThisPage}, Path=BindingContext.ItemWasChangedCommand}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <condition:ConditionsView.NoData>
+            <Label
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource MessageTextColor}"
+                Text="{markups:Localize NoData}"/>
+        </condition:ConditionsView.NoData>
+    </condition:ConditionsView>
+</base:ContentPageBase>

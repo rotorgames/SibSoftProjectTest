@@ -6,7 +6,7 @@ namespace SibSoftProjectTest.Views.Cells
 {
     public partial class CustomImageCell : ViewCell
     {
-        public static readonly BindableProperty ImageProperty = BindableProperty.Create(nameof(Image), typeof(string), typeof(CustomImageCell), propertyChanged:OnImageChanged);
+        public static readonly BindableProperty ImageProperty = BindableProperty.Create(nameof(Image), typeof(string), typeof(CustomImageCell), string.Empty, propertyChanged:OnImageChanged);
 
         public string Image
         {
@@ -28,6 +28,14 @@ namespace SibSoftProjectTest.Views.Cells
         {
             get { return (string)GetValue(DescriptionProperty); }
             set { SetValue(DescriptionProperty, value); }
+        }
+
+        public static readonly BindableProperty IsFavoriteButtonVisibleProperty = BindableProperty.Create(nameof(IsFavoriteButtonVisible), typeof(bool), typeof(CustomImageCell), true);
+
+        public bool IsFavoriteButtonVisible
+        {
+            get { return (bool)GetValue(IsFavoriteButtonVisibleProperty); }
+            set { SetValue(IsFavoriteButtonVisibleProperty, value); }
         }
 
         public static readonly BindableProperty IsFavoriteProperty = BindableProperty.Create(nameof(IsFavorite), typeof(bool), typeof(CustomImageCell), false, BindingMode.TwoWay);
@@ -102,6 +110,23 @@ namespace SibSoftProjectTest.Views.Cells
         }
 
         private void OnEditButtonTapped(object sender, EventArgs e)
+        {
+            if (DescriptionLabel.IsVisible)
+            {
+                TurnEditing();
+                DescriptionEditor.Focus();
+            }
+        }
+
+        private void OnDescriptionEditorUnfocused(object sender, FocusEventArgs e)
+        {
+            var self = (Editor) sender;
+
+            if(self.IsVisible)
+                TurnEditing();
+        }
+
+        private void TurnEditing()
         {
             DescriptionLabel.IsVisible = !DescriptionLabel.IsVisible;
             DescriptionEditor.IsVisible = !DescriptionEditor.IsVisible;

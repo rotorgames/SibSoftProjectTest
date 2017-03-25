@@ -54,12 +54,16 @@
     <Compile Include="Services\Storages\Base\LocalStorageBase.cs" />
     <Compile Include="Services\Storages\CatsLocalStorage.cs" />
     <Compile Include="ViewModel\Base\ViewModelBase.cs" />
+    <Compile Include="ViewModel\FavoritesViewModel.cs" />
     <Compile Include="ViewModel\ImagesViewModel.cs" />
     <Compile Include="Views\Cells\CustomImageCell.xaml.cs">
       <DependentUpon>CustomImageCell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\Condition\ConditionsView.cs" />
     <Compile Include="Views\Pages\Base\ContentPageBase.cs" />
+    <Compile Include="Views\Pages\FavoritesPage.xaml.cs">
+      <DependentUpon>FavoritesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\ImagesPage.xaml.cs">
       <DependentUpon>ImagesPage.xaml</DependentUpon>
     </Compile>
@@ -128,7 +132,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Pages\FavoritesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Pages\ImagesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

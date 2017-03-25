@@ -44,6 +44,13 @@ namespace SibSoftProjectTest.ViewModel
             UpdateData();
         }
 
+        protected override void ViewIsAppearing(object sender, EventArgs e)
+        {
+            base.ViewIsAppearing(sender, e);
+
+            UpdateData();
+        }
+
         private async void UpdateData()
         {
             CurrentState = State.Loading;
@@ -64,6 +71,12 @@ namespace SibSoftProjectTest.ViewModel
                     CurrentState = State.Error;
                     return;
                 }
+            }
+
+            if (localCats == null || localCats.Count == 0)
+            {
+                CurrentState = State.NoData;
+                return;
             }
 
             if (favoritesCatsIds != null)

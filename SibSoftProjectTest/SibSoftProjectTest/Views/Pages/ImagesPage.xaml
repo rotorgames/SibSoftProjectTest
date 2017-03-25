@@ -7,7 +7,7 @@
              xmlns:condition="clr-namespace:SibSoftProjectTest.Views.Controls.Condition;assembly=SibSoftProjectTest"
              x:Class="SibSoftProjectTest.Views.Pages.ImagesPage"
              x:Name="ThisPage"
-             Title="{markups:Localize Images}">
+             Title="{markups:Localize All}">
     <condition:ConditionsView
         State="{Binding CurrentState}">
         <ListView

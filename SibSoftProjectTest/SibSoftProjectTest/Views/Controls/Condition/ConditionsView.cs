@@ -55,6 +55,7 @@ namespace SibSoftProjectTest.Views.Controls.Condition
                 case nameof(State):
                 case nameof(Normal):
                 case nameof(Loading):
+                case nameof(NoData):
                 case nameof(Error):
                     UpdateCurrentView();
                     break;

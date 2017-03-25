@@ -13,7 +13,7 @@ namespace SibSoftProjectTest
         {
             InitializeComponent();
 
-            MainPage = new SibSoftProjectTest.MainPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

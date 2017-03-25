@@ -38,7 +38,7 @@ Microsoft.VisualStudio.QualityTools.UnitTestFramework.10.0.0.0
 который прекрасное решает эту задачу и уменьшает время на разработку.
 
 #### MVVM Framework 
-Я решил использовать FreshMvvm что бы не пришлось реализовывать весь патерн ViewModel to ViewModel навигации, IO контейнеров и DI. 
+Я решил использовать FreshMvvm что бы не пришлось реализовывать весь патерн ViewModel to ViewModel навигации, IoC контейнеров и DI. 
 Но все же я решил дописать свой Mapper так как я предпочитаю регистрировать Views и ViewModels вручную, это дает большей гибкости.
 
 #### Fody.PropertyChanged
